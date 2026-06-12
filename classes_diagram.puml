@@ -1,0 +1,57 @@
+@startuml classes_diagram.puml
+
+class Participante {
+    nombre
+    apellido
+    edad
+    mail
+    dni
+    medioContactoPreferido
+    chancesPorMaterias
+    chancesPorReferencias
+    chancesTotales
+    tipoInstitucionAcademica
+    Categoria
+    Referencia
+    Probabilidad
+
+    calcularChancesPorMaterias()
+    calcularChancesTotales()
+    calcularProbabilidad()
+
+}
+
+class 'descartar' Referido { 
+    mail
+    dni
+    link
+    Participante 
+
+    aceptarSolicitud()
+}
+
+class Referencia {
+    mail
+    dni
+    link
+    estaAceptada
+    Participante 
+    fechaAceptacionSolicitud
+    tipoInstitucionAcademica    
+}
+
+class Categoria {
+    costo
+    multiplicador
+
+    establecerMultiplicador()
+}
+
+
+
+
+
+Participante ---> Categoria
+Participante --> Referencia
+Referido -> Participante
+@enduml
