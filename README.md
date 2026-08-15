@@ -1,3 +1,8 @@
 # ¡AHK te lleva al Mundial!
 
-Repositorio dedicado al trabajo práctico de cierre del módulo 2 de Desarrollo de Software.
+Trabajo práctico de cierre del módulo 2 de Desarrollo de Software.
+
+## Nota superimportante
+
+Las notificaciones necesitan credenciales que van en `src/config.js`. El archivo se encuentra en el .gitignore
+por seguridad.
