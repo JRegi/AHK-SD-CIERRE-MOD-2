@@ -1,17 +1,8 @@
 export class Categoria {
-  constructor(
-    nombre = null,
-    costo = null,
-    multiplicador = null,
-    cantMinIngreso = null
-  ) {
+  constructor(nombre, multiplicador, costo, referidosMinimos) {
     this.nombre = nombre;
-    this.costo = costo;
     this.multiplicador = multiplicador;
-    this.cantMinIngreso = cantMinIngreso;
+    this.costo = costo;
+    this.referidosMinimos = referidosMinimos;
   }
-
-
 }
-
-

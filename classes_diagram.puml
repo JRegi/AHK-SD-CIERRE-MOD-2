@@ -1,57 +1,108 @@
-@startuml classes_diagram.puml
+@startuml AHK_Mundial
 
-class Participante {
-    nombre
-    apellido
-    edad
-    mail
-    dni
-    medioContactoPreferido
-    chancesPorMaterias
-    chancesPorReferencias
-    chancesTotales
-    tipoInstitucionAcademica
-    Categoria
-    Referencia
-    Probabilidad
-
-    calcularChancesPorMaterias()
-    calcularChancesTotales()
-    calcularProbabilidad()
-
+class Sorteo {
+  participantes: Participante[]
+  referidos: Referido[]
+  ascensos: Number
+  bronce: Categoria
+  plata: Categoria
+  oro: Categoria
+  registrar(nombre, apellido, edad, mail, dni)
+  invitar(referente, email, dni)
+  aceptar(dni, nombre, apellido, edad, esAlumnoAHK)
+  notificar(participante, mensaje)
+  calcularChancePorReferido(referente, referido)
+  verificarAscenso(participante)
+  probabilidad(participante)
+  cantidadPorCategoria()
+  participanteConMasChances()
+  inscriptosPorDia()
 }
 
-class 'descartar' Referido { 
-    mail
-    dni
-    link
-    Participante 
-
-    aceptarSolicitud()
-}
-
-class Referencia {
-    mail
-    dni
-    link
-    estaAceptada
-    Participante 
-    fechaAceptacionSolicitud
-    tipoInstitucionAcademica    
+class Administrador {
+  nombre: String
+  modificarChances(categoria, valor)
+  modificarCosto(categoria, valor)
 }
 
 class Categoria {
-    costo
-    multiplicador
-
-    establecerMultiplicador()
+  nombre: String
+  multiplicador: Number
+  costo: Number
+  referidosMinimos: Number
 }
 
+class Participante {
+  nombre: String
+  apellido: String
+  edad: Number
+  mail: String
+  dni: String
+  telefono: String
+  telegramChatId: String
+  mediosContacto: String[]
+  esAlumnoAHK: Boolean
+  estudiaTecnologia: Boolean
+  materias: Materia[]
+  fechaInscripcion: Date
+  contarReferidos()
+  calcularChanceMateriasCursadas()
+  calcularChanceMateriasAprobadas()
+  contarMateriasCursadas()
+  contarMateriasAprobadas()
+  calcularChancePorReferidos()
+  calcularChancesTotales()
+  detalleChances()
+}
 
+class Materia {
+  nombre: String
+  aprobada: Boolean
+  nota: Number
+}
 
+class Referido {
+  email: String
+  dni: String
+  referente: Participante
+  aceptado: Boolean
+}
 
+class Referencia {
+  referente: Participante
+  referido: Participante
+  chance: Number
+  fecha: Date
+}
 
-Participante ---> Categoria
-Participante --> Referencia
-Referido -> Participante
+class ArU2026Service {
+  verificarEstudiante(dni)
+}
+
+class EmailNotificador {
+  enviar(participante, mensaje)
+}
+
+class SmsNotificador {
+  enviar(participante, mensaje)
+}
+
+class TelegramNotificador {
+  enviar(participante, mensaje)
+}
+
+Sorteo "1" o-- "*" Participante
+Sorteo "1" o-- "*" Referido
+Sorteo "1" *-- "3" Categoria
+Sorteo --> ArU2026Service
+Sorteo --> EmailNotificador
+Sorteo --> SmsNotificador
+Sorteo --> TelegramNotificador
+Administrador --> Categoria
+Participante "1" --> "1" Categoria
+Participante "1" *-- "*" Materia
+Participante "1" *-- "*" Referencia
+Referencia --> Participante
+Referido --> Participante 
+
 @enduml

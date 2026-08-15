@@ -1,14 +1,8 @@
 export class Referencia {
-  constructor
-    ({
-    Participante = null,
-    fechaAceptacionSolicitud = null,
-    tipoInstitucionAcademica = null
-    }) {
-    this.Participante = Participante;
-    this.fechaAceptacionSolicitud = fechaAceptacionSolicitud;
-    this.tipoInstitucionAcademica = tipoInstitucionAcademica;
+  constructor(referente, referido, chance) {
+    this.referente = referente;
+    this.referido = referido;
+    this.chance = chance;
+    this.fecha = new Date();
   }
 }
-
-

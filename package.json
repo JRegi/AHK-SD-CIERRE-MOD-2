@@ -9,6 +9,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module"
-  
+  "type": "module",
+  "dependencies": {
+    "node-telegram-bot-api": "^1.2.0",
+    "nodemailer": "^9.0.5",
+    "twilio": "^6.1.0"
+  }
 }

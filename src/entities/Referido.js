@@ -1,14 +1,8 @@
 export class Referido {
-  constructor(mail, dni, link, Participante) {
-    this.mail = mail;
+  constructor(email, dni, referente) {
+    this.email = email;
     this.dni = dni;
-    this.link = link;
-    this.Participante = Participante;
-  }
-
-  aceptarSolicitud() {
-    // TODO: Implement method
+    this.referente = referente;
+    this.aceptado = false;
   }
 }
-
-
